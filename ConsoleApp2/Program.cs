@@ -10,9 +10,8 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            GetRegisteredAddress(@"Server=217.63.100.219\FASTBASE4;Database=TEMP_DB;User Id=sa;Password=!Qaz2wsx");            
+            GetRegisteredAddress(@"Server=217.63.100.219\FASTBASE4;Database=TEMP_DB;User Id=sa;Password=!Qaz2wsx");
         }
-
         private static void GetRegisteredAddress(string connectionString)
         {
             try
@@ -190,7 +189,7 @@ namespace ConsoleApp2
                     dtResult = GetData(cmd, connectionString);
                     foreach (DataRow row in dtResult.Rows)
                     {
-                        string address = row[6].ToString();        
+                        string address = row[6].ToString();
                         if (address != "Sorry, you need to be logged in to see this address" && address != "")
                         {
                             var client = new RestClient("https://maps.googleapis.com/");
@@ -378,8 +377,8 @@ namespace ConsoleApp2
                                                 "Previous_Company_Numbers," +
                                                 "Merged_Into," +
                                                 "LastUpdatedOn," +
-                                                "LastUpdatedBy" + ")" + " values(0,'','','"+ GetPostalCode(googleFormattedAddress) + "', '"+ GetState(googleFormattedAddress) + "','" + GetCity(googleFormattedAddress) + "','"+ GetCountryCode(googleFormattedAddress) + "','','',0,0," +                                                
-                                                "'" + row[0].ToString() +"',"+
+                                                "LastUpdatedBy" + ")" + " values(0,'','','" + GetPostalCode(googleFormattedAddress) + "', '" + GetState(googleFormattedAddress) + "','" + GetCity(googleFormattedAddress) + "','" + GetCountryCode(googleFormattedAddress) + "','','',0,0," +
+                                                "'" + row[0].ToString() + "'," +
                                                 "'" + row[1].ToString() + "'," +
                                                 "'" + row[2].ToString() + "'," +
                                                 "'" + row[3].ToString() + "'," +
@@ -555,7 +554,7 @@ namespace ConsoleApp2
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception : " +ex.Message);
+                Console.WriteLine("Exception : " + ex.Message);
             }
             Console.ReadLine();
         }
